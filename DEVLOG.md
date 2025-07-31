@@ -1,17 +1,6 @@
-# Marvel Vault - Frontend Challenge
+## Dia 1 – Setup do projeto com Next.js e estrutura de pastas
 
-SPA com listagem e detalhe de personagens da Marvel.
-
-## Tecnologias
-- Next.js (App Router)
-- TypeScript
-- React
-- ESLint + Prettier
-- Zustand (estado global)
-- CSS Modules (estilização)
-
-## Como rodar
-
-```bash
-npm install
-npm run dev
+- Inicialização do projeto com `create-next-app` (TypeScript, App Router, ESLint, Tailwind CSS)
+- Adicionou pasta `components` e `rotas dinâmicas` para começar a implementação dos componenetes e telas
+- Adicionou pastas `service` e `types` para organizar serviços e tipos.
+- Implementou serviço básico para buscar heróis da API Super Heroes.
