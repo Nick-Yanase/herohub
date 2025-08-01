@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="75px" height="41px" viewBox="0 0 75 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group 2</title>
-    <defs>
-        <circle id="path-1" cx="55.5" cy="19.5" r="10.5"></circle>
-        <filter x="-64.3%" y="-50.0%" width="228.6%" height="228.6%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.881029212   0 0 0 0 0   0 0 0 0 0  0 0 0 0.603747815 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Guide" transform="translate(-80.000000, -1126.000000)">
-            <g id="Group-2" transform="translate(80.000000, 1126.000000)">
-                <rect id="Rectangle" fill="#E4E5E9" x="0" y="0" width="75" height="39" rx="19.5"></rect>
-                <g id="Oval">
-                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                    <use fill="#FF0000" fill-rule="evenodd" xlink:href="#path-1"></use>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg width="75" height="41" viewBox="0 0 75 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_434_25)">
+<path d="M55.5 0H19.5C8.73045 0 0 8.73045 0 19.5C0 30.2696 8.73045 39 19.5 39H55.5C66.2696 39 75 30.2696 75 19.5C75 8.73045 66.2696 0 55.5 0Z" fill="#E4E5E9"/>
+<g filter="url(#filter0_d_434_25)">
+<path d="M55.5 30C61.299 30 66 25.299 66 19.5C66 13.701 61.299 9 55.5 9C49.701 9 45 13.701 45 19.5C45 25.299 49.701 30 55.5 30Z" fill="black"/>
+</g>
+<path d="M55.5 30C61.299 30 66 25.299 66 19.5C66 13.701 61.299 9 55.5 9C49.701 9 45 13.701 45 19.5C45 25.299 49.701 30 55.5 30Z" fill="#FF0000"/>
+</g>
+<defs>
+<filter id="filter0_d_434_25" x="37" y="4" width="37" height="37" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="3"/>
+<feGaussianBlur stdDeviation="4"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.881029 0 0 0 0 0 0 0 0 0 0 0 0 0 0.603748 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_434_25"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_434_25" result="shape"/>
+</filter>
+<clipPath id="clip0_434_25">
+<rect width="75" height="41" fill="white"/>
+</clipPath>
+</defs>
 </svg>

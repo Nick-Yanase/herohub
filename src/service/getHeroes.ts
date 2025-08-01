@@ -1,8 +1,7 @@
-// src/services/getHeroes.ts
 import api from './api'
 import { Hero } from '@/types/Hero'
 
-export async function getFirstHeroes(): Promise<Hero[]> {
+export async function getHeroes(): Promise<Hero[]> {
   const requests = []
 
   for (let id = 1; id <= 20; id++) {
