@@ -11,11 +11,10 @@
   --color-primary: #FF1510; 
   --color-secondary: #FDECEC; 
   --color-terciary: #E7F6E7; 
-  --color-gray-50: #404040,
-  --color-gray-40: #8C8C8C,
-  --color-gray-30: #B9B9B9
+  --color-silver-50: #404040;
+  --color-silver-40: #8C8C8C;
+  --color-silver-30: #B9B9B9;
 }
-
 
 body {
   background: var(--background);
