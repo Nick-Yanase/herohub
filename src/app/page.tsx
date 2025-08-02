@@ -3,7 +3,7 @@ import Image from "next/image";
 import SearchBar from "../components/SearchBar";
 import Template from "../components/template/Template";
 import HeroCard from "../components/HeroCard";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Hero } from "@/types/Hero";
 
 export default function HomePage() {
