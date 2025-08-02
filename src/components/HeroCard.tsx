@@ -4,7 +4,7 @@ interface HeroCardProps {
   heroId: string;
   heroName: string;
   heroImage: string;
-  favorite?: () => void; //oinde colocar essa função, com zustand?
+  favorite?: () => void; //onde colocar essa função, com zustand?
 }
 export default function HeroCard(heroProps: HeroCardProps) {
   const { heroId, heroName, heroImage, favorite } = heroProps;
