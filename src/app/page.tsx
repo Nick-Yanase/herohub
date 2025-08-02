@@ -3,16 +3,18 @@ import Image from "next/image";
 import SearchBar from "../components/SearchBar";
 import Template from "../components/template/Template";
 import HeroCard from "../components/HeroCard";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Hero } from "@/types/Hero";
 
 export default function HomePage() {
 
   const [heroes, setHeroes] = useState<Hero[]>([])
+
   const [sortedHeroes, setSortedHeroes] = useState<Hero[]>([])
   const [isOrderName, setIsOrderName] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(true) 
 
+  // Carregamento de dados da api
   useEffect(() => {
     setLoading(true)
     fetch('/api/heroes')
@@ -31,6 +33,7 @@ export default function HomePage() {
       })
   }, [])
 
+  // Função para ordenar heróis por nome
   useEffect(() => {
     const ordered = [...heroes].sort((a, b) =>
       isOrderName
@@ -44,6 +47,7 @@ export default function HomePage() {
     setIsOrderName(!isOrderName)
   }
 
+  
   return (
     <Template headerVer="home">
       {loading && (
@@ -56,11 +60,13 @@ export default function HomePage() {
           <h1 className="text-4xl text-silver-50 font-bold">Explore o universo</h1>
           <p className="text-silver-40 ">Mergulhe no domínio deslubrante de todos os persongaens que você ama - e aqueles que você decobrirá em breve!</p>
         </div>
-
-        <SearchBar className="w-[1000px] p-4" />
+        
+        <div>
+          <SearchBar className="w-[1000px] p-4" />
+        </div>
 
         <div className="w-full flex items-center justify-between gap-4 mt-10">
-          <p className="text-xl font-medium text-silver-30">Encontrados {heroes.length} heróis</p>
+          <p className="text-xl font-medium text-silver-30">Encontrados {sortedHeroes.length} heróis</p>
 
           <div className="flex gap-20 items-center">
             <div className="flex gap-4 items-center">
