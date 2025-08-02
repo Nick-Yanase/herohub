@@ -1,22 +1,22 @@
 'use client'
 import Image from "next/image";
-import SearchBar from "./components/SearchBar";
-import Template from "./components/template/Template";
-import HeroCard from "./components/HeroCard";
+import SearchBar from "../components/SearchBar";
+import Template from "../components/template/Template";
+import HeroCard from "../components/HeroCard";
 import { useEffect, useState } from "react";
 import { Hero } from "@/types/Hero";
-import { getHeroes } from "@/service/getHeroes";
 
 export default function HomePage() {
 
   const [heroes, setHeroes] = useState<Hero[]>([]);
+  
   useEffect(() => {
-    console.log('useEffect') 
-     getHeroes().then((data) => {
-      console.log('heroes', data)
-      setHeroes(data)
-  })
+  fetch('/api/heroes')
+    .then((res) => res.json())
+    .then(setHeroes);
   }, []);
+
+
   const [isOrderName, setIsOrderName] = useState<boolean>(false);
   const toggleOrderName = () => {
     setIsOrderName(!isOrderName);
