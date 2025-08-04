@@ -46,7 +46,7 @@ export default function HomePage() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [setLoading]);
 
   // Função para ordenar lista por nome
   const getOrderedHeroes = (list: Hero[]) => {

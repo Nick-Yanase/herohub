@@ -35,7 +35,7 @@ export default function HeroDetail() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [id, setLoading]);
   if (error) {
     return <div className="text-red-500">{error}</div>;
   }
