@@ -11,22 +11,26 @@ export async function GET() {
   }
 
   try {
-    
-    const maxRequests = 5; 
-    const heroIds = Array.from({ length: 60 }, (_, i) => i + 30);
+    const maxRequests = 5;
+    const jumpSize = 30;
+    const totalHeroesToFetch = 60; 
     const heroes: Hero[] = [];
+    let currentId = 1;
 
-    for (let i = 0; i < heroIds.length; i += maxRequests) {
-      const chunk = heroIds.slice(i, i + maxRequests);
+    while (heroes.length < totalHeroesToFetch) {
+
+      const chunk = Array.from(
+        { length: Math.min(maxRequests, totalHeroesToFetch - heroes.length) }, 
+        (_, i) => currentId + i
+      );
+
       const responses = await Promise.all(
         chunk.map(id =>
           fetch(`https://superheroapi.com/api/${token}/${id}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             cache: 'force-cache',
-            next: {
-              revalidate: 60,
-            },
+            next: { revalidate: 60 },
           })
         )
       );
@@ -39,7 +43,10 @@ export async function GET() {
       );
 
       heroes.push(...chunkHeroes);
-      await sleep(300);
+      
+      currentId += jumpSize;
+      
+      await sleep(300); 
     }
 
     return NextResponse.json(heroes, {
