@@ -5,6 +5,8 @@ import Template from "../components/template/Template";
 import HeroCard from "../components/HeroCard";
 import { useEffect, useState } from "react";
 import { Hero } from "@/types/Hero";
+import { useLoading } from "@/context/LoadingContext";
+import LoadingBar from "@/components/LoadingBar";
 
 export default function HomePage() {
 
@@ -12,7 +14,7 @@ export default function HomePage() {
 
   const [sortedHeroes, setSortedHeroes] = useState<Hero[]>([])
   const [isOrderName, setIsOrderName] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(true) 
+  const {loading, setLoading} = useLoading()
 
   // Carregamento de dados da api
   useEffect(() => {
@@ -48,12 +50,15 @@ export default function HomePage() {
   }
 
   
+  if (!heroes) {
+    return (<Template  headerVer="charDetail" > <LoadingBar/></Template>)
+    
+  }
+
   return (
     <Template headerVer="home">
       {loading && (
-        <div className="fixed top-0 left-0 w-full h-1 bg-transparent overflow-hidden z-50">
-          <div className="h-full w-full bg-primary animate-pulse-loading"></div>
-        </div>
+        <LoadingBar />
       )}
       <section className="w-full max-w-7xl flex flex-col items-center justify-center gap-8">
         <div className="flex flex-col items-center justify-center text-center gap-4">

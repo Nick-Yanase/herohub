@@ -5,44 +5,50 @@ import { useEffect, useState } from 'react'
 import { Hero } from '@/types/Hero'
 import Template from '@/components/template/Template'
 import InfoHero from '@/components/hero/InfoHero'
-import Image from 'next/image'
 import ImageHero from '@/components/hero/ImageHero'
 import Quadrinho from '@/components/hero/Quadrinho'
+import { useLoading } from '@/context/LoadingContext'
+import LoadingBar from '@/components/LoadingBar'
 
 export default function HeroDetail() {
   const { id } = useParams()
-  const [hero, setHero] = useState<Hero | null>(null)
+  const [hero, setHero] = useState<Hero>()
   const [error, setError] = useState<string | null>(null)
+  const {loading, setLoading} = useLoading()
 
   useEffect(() => {
+    setLoading(true)
     console.log('Fetching hero with ID:', id)
     if (!id || isNaN(Number(id as string))) {
       setError('ID inválido')
       return
     }
-
-    const fetchHero = async () => {
-      try {
-        const res = await fetch(`/api/hero/${id}`)
-        if (!res.ok) {
-          setError('Erro ao carregar herói')
-          return
-        }
-        const data: Hero = await res.json()
+       fetch(`/api/hero/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
         setHero(data)
-      } catch (err) {
-        setError('Erro inesperado ao carregar dados')
-      }
-    }
+      })
+      .catch((err) => {
+        console.error('Erro ao carregar herói:', err)
+        setError('Erro ao carregar herói')
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }, [])
+  if (error) {
+    return <div className="text-red-500">{error}</div>
+  }
 
-    fetchHero()
-  }, [id])
-
-  if (error) return <div className="text-red-500">{error}</div>
-  if (!hero) return <div className="text-silver-50">Carregando herói...</div>
-
+  if (!hero) {
+    return (<Template  headerVer="charDetail" > <LoadingBar/></Template>)
+    
+  }
   return (
     <Template headerVer="charDetail">
+      {loading && (
+        <LoadingBar />
+      )}
       <section className="w-full max-w-7xl flex flex-col items-center justify-center gap-8 px-5 relative mt-6">
         <span className='absolute inset-0 z-0 flex items-start justify-end p-5 
              text-[min(20vw,150px)] leading-none 

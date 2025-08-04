@@ -12,7 +12,7 @@ export async function GET(
     );
   }
 
-  const { id } = params; // Agora seguro para usar
+  const { id } = params; 
 
   // Validação do ID
   if (!id || isNaN(Number(id))) {
@@ -38,7 +38,7 @@ export async function GET(
         'Content-Type': 'application/json',
       },
       next: {
-        revalidate: 60, // cache por 60s
+        revalidate: 60, 
       },
     });
 
