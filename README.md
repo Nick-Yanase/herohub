@@ -42,18 +42,6 @@ Utilizei a **[superheroapi.com](https://superheroapi.com/)** como fonte de dados
 
 ---
 
-## 📁 Estrutura de Pastas
-app/
-├── api/ → Rotas da API (proxy para superheroapi)
-├── hero/[id]/ → Página dinâmica de detalhes
-├── components/ → Componentes reutilizáveis (HeroCard, SearchBar, etc.)
-├── context/ → Contextos globais (Loading, Favorites)
-├── types/ → Interfaces e tipos TypeScript
-├── public/ → Assets (imagens, ícones, fonts)
-└── template/ → Layout base com Header e Footer
-
----
-
 ## 📦 Como Rodar o Projeto
 
 1. Clone o repositório:
