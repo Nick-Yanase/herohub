@@ -9,7 +9,7 @@ export interface HeaderProps {
 export default function Header({stylePage}: HeaderProps) {
   return (
     <header className={`w-full flex items-center justify-center ${stylePage === 'home' ? "bg-white" : "bg-terciary"}`}>
-      <nav className={`w-full h-24 max-w-7xl flex items-center ${stylePage === 'home' ? "justify-center" : "justify-start"}`}>
+      <nav className={`w-full h-24 max-w-7xl flex items-center ${stylePage === 'home' ? "justify-center  pt-10" : "justify-start"}`}>
         {
           stylePage === "home" && (
             <Logotipo width={300} height={50} />
