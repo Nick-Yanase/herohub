@@ -1,4 +1,3 @@
-// app/api/heroes/route.ts
 import { NextResponse } from 'next/server';
 import { Hero } from '@/types/Hero';
 

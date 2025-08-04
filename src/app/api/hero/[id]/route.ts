@@ -1,20 +1,15 @@
 import { NextResponse } from 'next/server';
 import { Hero } from '@/types/Hero';
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  if (!params || !params.id) {
-    return NextResponse.json(
-      { error: 'Missing hero ID' },
-      { status: 400 }
-    );
-  }
+type Params = {
+  params: {
+    id: string;
+  };
+};
 
-  const { id } = params; 
+export async function GET(_: Request, context: Params) {
+  const { id } = context.params;
 
-  // Validação do ID
   if (!id || isNaN(Number(id))) {
     return NextResponse.json(
       { error: 'Invalid hero ID' },
@@ -38,7 +33,7 @@ export async function GET(
         'Content-Type': 'application/json',
       },
       next: {
-        revalidate: 60, 
+        revalidate: 60,
       },
     });
 
