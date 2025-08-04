@@ -4,12 +4,14 @@ import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Hero } from '@/types/Hero'
+import { StylePage } from './template/Template'
 
 interface SearchBarProps {
+  stylePage: StylePage
   className?: string
 }
 
-export default function SearchBar({ className }: SearchBarProps) {
+export default function SearchBar({ className, stylePage }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [heroes, setHeroes] = useState<Hero[]>([])
@@ -70,7 +72,7 @@ export default function SearchBar({ className }: SearchBarProps) {
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <div className={`flex gap-6 items-center justify-start bg-secondary rounded-full ${className}`}>
+      <div className={`flex p-4 gap-6 items-center justify-start rounded-full ${className} ${stylePage === "home" ? "bg-secondary":"bg-white"}`}>
         <Image src="/img/icons/Search.svg" alt="lupa" width={20} height={20} />
         <input
           type="text"
@@ -81,14 +83,14 @@ export default function SearchBar({ className }: SearchBarProps) {
           }}
           onKeyDown={handleKeyDown}
           placeholder="Procure por heróis"
-          className="w-full outline-none bg-transparent text-primary placeholder:text-silver-40"
+          className={`w-full outline-none bg-transparent  placeholder:text-silver-40 ${stylePage === "home" ? "text-primary":"text-silver-40"}`}
           onFocus={() => searchTerm && setShowSuggestions(true)}
         />
       </div>
 
       {/* Lista de sugestões */}
       {showSuggestions && suggestions.length > 0 && (
-        <ul className="absolute top-full mt-2 w-full bg-secondary rounded-lg shadow-lg z-40 max-h-60 overflow-y-auto">
+        <ul className={`absolute top-full mt-2 w-full  rounded-lg shadow-lg z-40 max-h-60 overflow-y-auto ${stylePage === "home" ? "bg-secondary":"bg-white"}`}>
           {suggestions.map((hero) => (
             <li
               key={hero.id}

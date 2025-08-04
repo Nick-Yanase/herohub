@@ -51,12 +51,12 @@ export default function HomePage() {
 
   
   if (!heroes) {
-    return (<Template  headerVer="charDetail" > <LoadingBar/></Template>)
+    return (<Template stylePage='home' > <LoadingBar/></Template>)
     
   }
 
   return (
-    <Template headerVer="home">
+    <Template stylePage='home'>
       {loading && (
         <LoadingBar />
       )}
@@ -67,7 +67,7 @@ export default function HomePage() {
         </div>
         
         <div>
-          <SearchBar className="w-[1000px] p-4" />
+          <SearchBar stylePage="home" className="w-[1000px] p-4" />
         </div>
 
         <div className="w-full flex items-center justify-between gap-4 mt-10">

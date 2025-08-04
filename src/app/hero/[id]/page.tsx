@@ -41,18 +41,18 @@ export default function HeroDetail() {
   }
 
   if (!hero) {
-    return (<Template  headerVer="charDetail" > <LoadingBar/></Template>)
+    return (<Template stylePage='heroDetail'> <LoadingBar/></Template>)
     
   }
   return (
-    <Template headerVer="charDetail">
+    <Template stylePage='heroDetail'>
       {loading && (
         <LoadingBar />
       )}
       <section className="w-full max-w-7xl flex flex-col items-center justify-center gap-8 px-5 relative mt-6">
-        <span className='absolute inset-0 z-0 flex items-start justify-end p-5 
+        <span className='absolute inset-0 max-w-[90%] z-0 flex items-start justify-end -top-8
              text-[min(20vw,150px)] leading-none 
-             text-silver-30/10 font-extrabold uppercase 
+             text-white/90 font-extrabold uppercase 
              break-words text-right pointer-events-none select-none'>{hero.name}
         </span>
         <div className='w-full flex justify-between items-center gap-8'>

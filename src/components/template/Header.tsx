@@ -1,29 +1,30 @@
-import Image from "next/image";
 import Logotipo from "./Logotipo";
-
-export type HeaderVersion = "home" | "charDetail"; 
+import { StylePage } from "./Template";
+import SearchBar from "../SearchBar";
 
 export interface HeaderProps {
-  version?: HeaderVersion ;
+  stylePage?: StylePage;
 }
 
-export default function Header({version}: HeaderProps) {
+export default function Header({stylePage}: HeaderProps) {
   return (
-    <header className="w-full flex items-center justify-center">
-      <nav className={`w-full py-4 max-w-7xl flex items-center ${version === 'home' ? "justify-center" : "justify-start"} `}>
-        {version === "home" && (
-          <Logotipo width={300} height={50} />
-        )}
-
-        {version === "charDetail" && (
-          <div className="flex items-center gap-28">
-            <Logotipo width={200} height={100} />
-            <div className="flex gap-4 items-center justify-start w-96 bg-secondary rounded-2xl p-2">
-              <Image src={"/img/icons/Search.svg"} alt="lupa" width={16} height={16} />
-              <input type="text" className=""/>
+    <header className={`w-full flex items-center justify-center ${stylePage === 'home' ? "bg-white" : "bg-terciary"}`}>
+      <nav className={`w-full h-24 max-w-7xl flex items-center ${stylePage === 'home' ? "justify-center" : "justify-start"}`}>
+        {
+          stylePage === "home" && (
+            <Logotipo width={300} height={50} />
+          )
+        }
+        {
+          stylePage === "heroDetail" && (
+            <div className="flex items-center gap-32 ">
+              <Logotipo width={200} height={70} />
+              <div className="w-[800px] ">
+                <SearchBar stylePage={stylePage} />
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </nav>
     </header>
   )

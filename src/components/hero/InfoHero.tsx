@@ -7,7 +7,7 @@ interface HeroCardProps {
 export default function InfoHero(props : HeroCardProps) {
   const { hero } = props;
   return (
-     <article className="w-[450px] flex flex-col gap-5">
+     <article className="w-[450px] flex flex-col gap-5 z-10">
           <div className="w-full flex items-center justify-between gap-4">
             <h1 className="text-4xl text-silver-50 font-bold">{hero.name}</h1>
             <Image
