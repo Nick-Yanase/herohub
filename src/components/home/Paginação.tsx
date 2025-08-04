@@ -1,39 +1,69 @@
-interface PaginaçãoProps{
-  currentPage: number
-  totalPages: number
-  changePage: (page: number) => void
+interface PaginacaoProps {
+  currentPage: number;
+  totalPages: number;
+  changePage: (page: number) => void;
 }
 
-export default function Paginação(props: PaginaçãoProps) {
-  const {changePage, currentPage, totalPages} = props
+export default function Paginacao({ currentPage, totalPages, changePage }: PaginacaoProps) {
+  const generatePageNumbers = () => {
+    const pages = [];
+    const start = Math.max(2, currentPage - 3);
+    const end = Math.min(totalPages - 1, currentPage + 3);
+
+    pages.push(1);
+
+    if (start > 2) {
+      pages.push("...");
+    }
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (end < totalPages - 1) {
+      pages.push("...");
+    }
+
+    if (totalPages > 1) {
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
+  const pages = generatePageNumbers();
+
   return (
     <div className="flex justify-center mt-8 gap-2">
       <button
         onClick={() => changePage(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 text-silver-40 bg-silver-20 rounded disabled:opacity-50"
+        className="cursor-pointer px-3 py-1 text-silver-40 bg-silver-20 rounded disabled:opacity-50"
       >
         Anterior
       </button>
 
-      {Array.from({ length: totalPages }, (_, index) => (
+      {pages.map((page, index) => (
         <button
           key={index}
-          onClick={() => changePage(index + 1)}
-          className={`px-3 py-1 rounded ${
-            currentPage === index + 1
+          onClick={() => typeof page === 'number' && changePage(page)}
+          disabled={page === "..."}
+          className={`cursor-pointer px-3 py-1 rounded ${
+            currentPage === page
               ? "bg-primary text-white"
-              : "bg-silver-20 text-silver-40"
+              : typeof page === 'number'
+              ? "bg-silver-20 text-silver-40"
+              : "cursor-default text-silver-30"
           }`}
         >
-          {index + 1}
+          {page}
         </button>
       ))}
 
       <button
         onClick={() => changePage(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 text-silver-40 bg-silver-20 rounded disabled:opacity-50"
+        className="cursor-pointer px-3 py-1 text-silver-40 bg-silver-20 rounded disabled:opacity-50"
       >
         Próximo
       </button>

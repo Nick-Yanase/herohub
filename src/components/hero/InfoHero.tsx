@@ -1,3 +1,4 @@
+import { useFavoriteStore } from "@/store/favoriteStore";
 import { Hero } from "@/types/Hero"
 import Image from "next/image";
 
@@ -6,16 +7,28 @@ interface HeroCardProps {
 }
 export default function InfoHero(props : HeroCardProps) {
   const { hero } = props;
+  const {isFavorite, removeFavorite, addFavorite } = useFavoriteStore()
+  const favorited = isFavorite(Number(hero.id));
+
+   const toggleFavorite = () => {
+    if (favorited) {
+      removeFavorite(Number(hero.id));
+    } else {
+      addFavorite(hero);
+    }
+  };
   return (
      <article className="w-[450px] flex flex-col gap-5 z-10">
           <div className="w-full flex items-center justify-between gap-4">
             <h1 className="text-4xl text-silver-50 font-bold">{hero.name}</h1>
-            <Image
-              src="/img/icons/HeartNotFilled.svg"
-              alt="icone coração não preenchido"
-              width={20}
-              height={20}
-            />
+            <button onClick={toggleFavorite} className="flex gap-4 cursor-pointer">
+              <Image
+                src={favorited ? "/img/icons/HeartFilled.svg" : "/img/icons/HeartNotFilled.svg"}
+                alt="Favoritar"
+                width={20}
+                height={20}
+              />
+            </button>
           </div>
 
           <p className='text-silver-40'>O(a) personagem {hero.name} é {hero.appearance.gender === "Male" ? "homem" : "mulher"} e {hero.appearance.race === "null" ? "não possui uma raça definida" : hero.appearance.race}. Sua primeira aparição foi em {hero.biography['first-appearance']} e vem do universo do(a) {hero.biography.publisher}.</p>
