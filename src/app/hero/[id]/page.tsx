@@ -51,25 +51,25 @@ export default function HeroDetail() {
   return (
     <Template stylePage="heroDetail">
       {loading && <LoadingBar />}
-      <section className="w-full max-w-7xl flex flex-col items-center justify-center gap-8 px-5 relative mt-6">
+      <section className="w-full max-w-7xl flex flex-col items-center justify-center gap-8 px-5 relative mt-8">
         <span
-          className="absolute inset-0 max-w-[90%] z-0 flex items-start justify-end -top-8
+          className="hidden lg:flex absolute inset-0 max-w-[90%] z-0  items-start justify-end -top-8
              text-[min(20vw,150px)] leading-none 
              text-white/90 font-extrabold uppercase 
              break-words text-right pointer-events-none select-none"
         >
           {hero.name}
         </span>
-        <div className="w-full flex justify-between items-center gap-8">
+        <div className="w-full flex flex-col md:flex-row lg:justify-between lg:items-center gap-8 z-10 pt-8 md:pt-0">
           <InfoHero hero={hero} />
           <ImageHero hero={hero} />
         </div>
 
-        <div className="w-full flex flex-col items-start gap-10 mt-12">
+        <div className="w-full flex flex-col items-center lg:items-start  gap-10 mt-12">
           <h2 className="text-xl text-silver-50 font-bold">
             Ultimos lançamentos
           </h2>
-          <div className="w-full flex flex-wrap gap-8 justify-start">
+          <div className="w-full flex flex-wrap gap-8 justify-center lg:justify-start">
             {Array.from({ length: 10 }).map((_, index) => (
               <Quadrinho key={`quadrinho-${index}`} hero={hero} />
             ))}

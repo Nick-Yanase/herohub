@@ -18,7 +18,7 @@ export default function InfoHero(props : HeroCardProps) {
     }
   };
   return (
-     <article className="w-[450px] flex flex-col gap-5 z-10">
+     <article className="w-full lg:w-[450px] flex flex-col gap-5">
           <div className="w-full flex items-center justify-between gap-4">
             <h1 className="text-4xl text-silver-50 font-bold">{hero.name}</h1>
             <button onClick={toggleFavorite} className="flex gap-4 cursor-pointer">

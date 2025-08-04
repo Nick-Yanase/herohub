@@ -82,28 +82,28 @@ export default function HomePage() {
 
   return (
     <Template stylePage="home">
-      {loading && <LoadingBar />}
+      {loading && heroes.length === 0 ? <LoadingBar /> : <></>}
       <section className="w-full max-w-7xl flex flex-col items-center justify-center gap-8 mt-8">
         <div className="flex flex-col items-center justify-center text-center gap-4">
           <h1 className="text-4xl text-silver-50 font-bold">
             Explore o universo
           </h1>
           <p className="text-silver-40">
-            Mergulhe no domínio deslubrante de todos os persongaens que você ama
+            Mergulhe no domínio deslubrante de todos os personagens que você ama
             - e aqueles que você decobrirá em breve!
           </p>
         </div>
 
         <div>
-          <SearchBar stylePage="home" className="w-[1000px] p-4" />
+          <SearchBar stylePage="home" className="sm:w-[350px] md:w-[600px] lg:w-[800px] xl:w-[1000px] p-4" />
         </div>
 
-        <div className="w-full flex items-center justify-between gap-4 mt-10">
+        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 mt-10 px-4">
           <p className="text-xl font-medium text-silver-30">
             Encontrados {orderedList.length} heróis
           </p>
 
-          <div className="flex gap-20 items-center">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-20 items-center">
             <div className="flex gap-4 items-center">
               <div className="flex gap-4">
                 <Image
@@ -154,22 +154,26 @@ export default function HomePage() {
           </div>
         </div>
 
-        {paginatedHeroes.length !== 0 ? (
-          <div className="w-full justify-items-center grid grid-cols-4 gap-10">
+        { 
+          heroes.length === 0 ? (
+              <LoadingBar />
+          ) : 
+          favorites.length === 0 && baseList === favorites? ( 
+             <div className="w-full flex flex-col justify-center items-center my-4">
+              <IconHeartOff size={200} className="text-silver-40" />
+              <p className="text-silver-50 text-xl">
+                Você ainda não favoritou nenhum persongaem, clique em{" "}
+                <span className="font-semibold">Mostrar todos</span> para
+                favortitar os seus heróis preferidos!
+              </p>
+            </div>
+          ) : 
+          <div className="w-full justify-items-center grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {paginatedHeroes.map((hero) => (
               <HeroCard hero={hero} key={hero.id} />
             ))}
           </div>
-        ) : (
-          <div className="w-full flex flex-col justify-center items-center my-4">
-            <IconHeartOff size={200} className="text-silver-40" />
-            <p className="text-silver-50 text-xl">
-              Você ainda não favoritou nenhum persongaem, clique em{" "}
-              <span className="font-semibold">Mostrar todos</span> para
-              favortitar os seus heróis preferidos!
-            </p>
-          </div>
-        )}
+        }
 
         <Paginação
           changePage={changePage}
