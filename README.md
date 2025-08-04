@@ -5,6 +5,13 @@ Aplicação web para explorar e favoritar heróis do universo dos quadrinhos, co
 Utilizei a **[superheroapi.com](https://superheroapi.com/)** como fonte de dados, já que a API da Marvel estava instável durante o desenvolvimento. Portanto, segui fielmente ao design e incrementei pequenas alterações na UI usufruindo ao máximo essa API - um pouco perfomática em comparação com a da marvel
 
 ---
+## Home
+<img width="1863" height="932" alt="image" src="https://github.com/user-attachments/assets/c8c6ce6a-a2ab-414e-8ab1-da8f9f8542ac" />
+
+## Hero detail
+<img width="1862" height="929" alt="image" src="https://github.com/user-attachments/assets/1e533c84-d7f7-4c16-8ed8-21d351224ca5" />
+
+---
 
 ## 🚀 Funcionalidades
 
